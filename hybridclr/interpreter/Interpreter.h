@@ -8,6 +8,7 @@ namespace hybridclr
 namespace interpreter
 {
 
+	extern const char* visiting_field;
 	class Interpreter
 	{
 	public:

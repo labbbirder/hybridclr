@@ -37,6 +37,7 @@ namespace hybridclr
 {
 namespace interpreter
 {
+	const char* visiting_field = nullptr;
 
 
 #pragma region memory
@@ -601,7 +602,17 @@ namespace interpreter
 	{
 		if (!ptr)
 		{
-			il2cpp::vm::Exception::RaiseNullReferenceException();
+			if(visiting_field != nullptr)
+			{
+				std::string message = "cannot access member '";
+				message += visiting_field;
+				message += "' from null";
+				il2cpp::vm::Exception::RaiseNullReferenceException(STRING_TO_STRINGVIEW(message));
+			}
+			else
+			{
+				il2cpp::vm::Exception::RaiseNullReferenceException();
+			}
 		}
 	}
 
@@ -1660,6 +1671,7 @@ else \
 		{
 			for (;;)
 			{
+				visiting_field = nullptr;
 				switch (*(HiOpcodeEnum*)ip)
 				{
 #pragma region memory
@@ -8914,9 +8926,10 @@ else \
 					uint16_t __dst = *(uint16_t*)(ip + 2);
 					uint16_t __obj = *(uint16_t*)(ip + 4);
 					uint16_t __offset = *(uint16_t*)(ip + 6);
+					visiting_field = *(const char**)(ip + 8);
 				    CHECK_NOT_NULL_THROW((*(Il2CppObject**)(localVarBase + __obj)));
 				    (*(int32_t*)(localVarBase + __dst)) = *(int8_t*)((uint8_t*)(*(Il2CppObject**)(localVarBase + __obj)) + __offset);
-				    ip += 8;
+				    ip += 16;
 				    continue;
 				}
 				case HiOpcodeEnum::LdfldVarVar_u1:
@@ -8924,9 +8937,10 @@ else \
 					uint16_t __dst = *(uint16_t*)(ip + 2);
 					uint16_t __obj = *(uint16_t*)(ip + 4);
 					uint16_t __offset = *(uint16_t*)(ip + 6);
+					visiting_field = *(const char**)(ip + 8);
 				    CHECK_NOT_NULL_THROW((*(Il2CppObject**)(localVarBase + __obj)));
 				    (*(int32_t*)(localVarBase + __dst)) = *(uint8_t*)((uint8_t*)(*(Il2CppObject**)(localVarBase + __obj)) + __offset);
-				    ip += 8;
+				    ip += 16;
 				    continue;
 				}
 				case HiOpcodeEnum::LdfldVarVar_i2:
@@ -8934,9 +8948,10 @@ else \
 					uint16_t __dst = *(uint16_t*)(ip + 2);
 					uint16_t __obj = *(uint16_t*)(ip + 4);
 					uint16_t __offset = *(uint16_t*)(ip + 6);
+					visiting_field = *(const char**)(ip + 8);
 				    CHECK_NOT_NULL_THROW((*(Il2CppObject**)(localVarBase + __obj)));
 				    (*(int32_t*)(localVarBase + __dst)) = *(int16_t*)((uint8_t*)(*(Il2CppObject**)(localVarBase + __obj)) + __offset);
-				    ip += 8;
+				    ip += 16;
 				    continue;
 				}
 				case HiOpcodeEnum::LdfldVarVar_u2:
@@ -8944,9 +8959,10 @@ else \
 					uint16_t __dst = *(uint16_t*)(ip + 2);
 					uint16_t __obj = *(uint16_t*)(ip + 4);
 					uint16_t __offset = *(uint16_t*)(ip + 6);
+					visiting_field = *(const char**)(ip + 8);
 				    CHECK_NOT_NULL_THROW((*(Il2CppObject**)(localVarBase + __obj)));
 				    (*(int32_t*)(localVarBase + __dst)) = *(uint16_t*)((uint8_t*)(*(Il2CppObject**)(localVarBase + __obj)) + __offset);
-				    ip += 8;
+				    ip += 16;
 				    continue;
 				}
 				case HiOpcodeEnum::LdfldVarVar_i4:
@@ -8954,9 +8970,10 @@ else \
 					uint16_t __dst = *(uint16_t*)(ip + 2);
 					uint16_t __obj = *(uint16_t*)(ip + 4);
 					uint16_t __offset = *(uint16_t*)(ip + 6);
+					visiting_field = *(const char**)(ip + 8);
 				    CHECK_NOT_NULL_THROW((*(Il2CppObject**)(localVarBase + __obj)));
 				    (*(int32_t*)(localVarBase + __dst)) = *(int32_t*)((uint8_t*)(*(Il2CppObject**)(localVarBase + __obj)) + __offset);
-				    ip += 8;
+				    ip += 16;
 				    continue;
 				}
 				case HiOpcodeEnum::LdfldVarVar_u4:
@@ -8964,9 +8981,10 @@ else \
 					uint16_t __dst = *(uint16_t*)(ip + 2);
 					uint16_t __obj = *(uint16_t*)(ip + 4);
 					uint16_t __offset = *(uint16_t*)(ip + 6);
+					visiting_field = *(const char**)(ip + 8);
 				    CHECK_NOT_NULL_THROW((*(Il2CppObject**)(localVarBase + __obj)));
 				    (*(int32_t*)(localVarBase + __dst)) = *(uint32_t*)((uint8_t*)(*(Il2CppObject**)(localVarBase + __obj)) + __offset);
-				    ip += 8;
+				    ip += 16;
 				    continue;
 				}
 				case HiOpcodeEnum::LdfldVarVar_i8:
@@ -8974,9 +8992,10 @@ else \
 					uint16_t __dst = *(uint16_t*)(ip + 2);
 					uint16_t __obj = *(uint16_t*)(ip + 4);
 					uint16_t __offset = *(uint16_t*)(ip + 6);
+					visiting_field = *(const char**)(ip + 8);
 				    CHECK_NOT_NULL_THROW((*(Il2CppObject**)(localVarBase + __obj)));
 				    (*(int64_t*)(localVarBase + __dst)) = *(int64_t*)((uint8_t*)(*(Il2CppObject**)(localVarBase + __obj)) + __offset);
-				    ip += 8;
+				    ip += 16;
 				    continue;
 				}
 				case HiOpcodeEnum::LdfldVarVar_u8:
@@ -8984,9 +9003,10 @@ else \
 					uint16_t __dst = *(uint16_t*)(ip + 2);
 					uint16_t __obj = *(uint16_t*)(ip + 4);
 					uint16_t __offset = *(uint16_t*)(ip + 6);
+					visiting_field = *(const char**)(ip + 8);
 				    CHECK_NOT_NULL_THROW((*(Il2CppObject**)(localVarBase + __obj)));
 				    (*(int64_t*)(localVarBase + __dst)) = *(uint64_t*)((uint8_t*)(*(Il2CppObject**)(localVarBase + __obj)) + __offset);
-				    ip += 8;
+				    ip += 16;
 				    continue;
 				}
 				case HiOpcodeEnum::LdfldVarVar_size_8:
@@ -8994,9 +9014,10 @@ else \
 					uint16_t __dst = *(uint16_t*)(ip + 2);
 					uint16_t __obj = *(uint16_t*)(ip + 4);
 					uint16_t __offset = *(uint16_t*)(ip + 6);
+					visiting_field = *(const char**)(ip + 8);
 				    CHECK_NOT_NULL_THROW((*(Il2CppObject**)(localVarBase + __obj)));
 				    Copy8((void*)(localVarBase + __dst), (uint8_t*)(*(Il2CppObject**)(localVarBase + __obj)) + __offset);
-				    ip += 8;
+				    ip += 16;
 				    continue;
 				}
 				case HiOpcodeEnum::LdfldVarVar_size_12:
@@ -9004,9 +9025,10 @@ else \
 					uint16_t __dst = *(uint16_t*)(ip + 2);
 					uint16_t __obj = *(uint16_t*)(ip + 4);
 					uint16_t __offset = *(uint16_t*)(ip + 6);
+					visiting_field = *(const char**)(ip + 8);
 				    CHECK_NOT_NULL_THROW((*(Il2CppObject**)(localVarBase + __obj)));
 				    Copy12((void*)(localVarBase + __dst), (uint8_t*)(*(Il2CppObject**)(localVarBase + __obj)) + __offset);
-				    ip += 8;
+				    ip += 16;
 				    continue;
 				}
 				case HiOpcodeEnum::LdfldVarVar_size_16:
@@ -9014,9 +9036,10 @@ else \
 					uint16_t __dst = *(uint16_t*)(ip + 2);
 					uint16_t __obj = *(uint16_t*)(ip + 4);
 					uint16_t __offset = *(uint16_t*)(ip + 6);
+					visiting_field = *(const char**)(ip + 8);
 				    CHECK_NOT_NULL_THROW((*(Il2CppObject**)(localVarBase + __obj)));
 				    Copy16((void*)(localVarBase + __dst), (uint8_t*)(*(Il2CppObject**)(localVarBase + __obj)) + __offset);
-				    ip += 8;
+				    ip += 16;
 				    continue;
 				}
 				case HiOpcodeEnum::LdfldVarVar_size_20:
@@ -9024,9 +9047,10 @@ else \
 					uint16_t __dst = *(uint16_t*)(ip + 2);
 					uint16_t __obj = *(uint16_t*)(ip + 4);
 					uint16_t __offset = *(uint16_t*)(ip + 6);
+					visiting_field = *(const char**)(ip + 8);
 				    CHECK_NOT_NULL_THROW((*(Il2CppObject**)(localVarBase + __obj)));
 				    Copy20((void*)(localVarBase + __dst), (uint8_t*)(*(Il2CppObject**)(localVarBase + __obj)) + __offset);
-				    ip += 8;
+				    ip += 16;
 				    continue;
 				}
 				case HiOpcodeEnum::LdfldVarVar_size_24:
@@ -9034,9 +9058,10 @@ else \
 					uint16_t __dst = *(uint16_t*)(ip + 2);
 					uint16_t __obj = *(uint16_t*)(ip + 4);
 					uint16_t __offset = *(uint16_t*)(ip + 6);
+					visiting_field = *(const char**)(ip + 8);
 				    CHECK_NOT_NULL_THROW((*(Il2CppObject**)(localVarBase + __obj)));
 				    Copy24((void*)(localVarBase + __dst), (uint8_t*)(*(Il2CppObject**)(localVarBase + __obj)) + __offset);
-				    ip += 8;
+				    ip += 16;
 				    continue;
 				}
 				case HiOpcodeEnum::LdfldVarVar_size_28:
@@ -9044,9 +9069,10 @@ else \
 					uint16_t __dst = *(uint16_t*)(ip + 2);
 					uint16_t __obj = *(uint16_t*)(ip + 4);
 					uint16_t __offset = *(uint16_t*)(ip + 6);
+					visiting_field = *(const char**)(ip + 8);
 				    CHECK_NOT_NULL_THROW((*(Il2CppObject**)(localVarBase + __obj)));
 				    Copy28((void*)(localVarBase + __dst), (uint8_t*)(*(Il2CppObject**)(localVarBase + __obj)) + __offset);
-				    ip += 8;
+				    ip += 16;
 				    continue;
 				}
 				case HiOpcodeEnum::LdfldVarVar_size_32:
@@ -9054,9 +9080,10 @@ else \
 					uint16_t __dst = *(uint16_t*)(ip + 2);
 					uint16_t __obj = *(uint16_t*)(ip + 4);
 					uint16_t __offset = *(uint16_t*)(ip + 6);
+					visiting_field = *(const char**)(ip + 8);
 				    CHECK_NOT_NULL_THROW((*(Il2CppObject**)(localVarBase + __obj)));
 				    Copy32((void*)(localVarBase + __dst), (uint8_t*)(*(Il2CppObject**)(localVarBase + __obj)) + __offset);
-				    ip += 8;
+				    ip += 16;
 				    continue;
 				}
 				case HiOpcodeEnum::LdfldVarVar_n_2:
@@ -9065,6 +9092,7 @@ else \
 					uint16_t __obj = *(uint16_t*)(ip + 4);
 					uint16_t __offset = *(uint16_t*)(ip + 6);
 					uint16_t __size = *(uint16_t*)(ip + 8);
+					visiting_field = *(const char**)(ip + 10);
 				    CHECK_NOT_NULL_THROW((*(Il2CppObject**)(localVarBase + __obj)));
 				    std::memmove((void*)(localVarBase + __dst), (uint8_t*)(*(Il2CppObject**)(localVarBase + __obj)) + __offset, __size);
 				    ip += 16;
@@ -9076,6 +9104,7 @@ else \
 					uint16_t __obj = *(uint16_t*)(ip + 4);
 					uint16_t __offset = *(uint16_t*)(ip + 6);
 					uint32_t __size = *(uint32_t*)(ip + 8);
+					visiting_field = *(const char**)(ip + 10);
 				    CHECK_NOT_NULL_THROW((*(Il2CppObject**)(localVarBase + __obj)));
 				    std::memmove((void*)(localVarBase + __dst), (uint8_t*)(*(Il2CppObject**)(localVarBase + __obj)) + __offset, __size);
 				    ip += 16;
@@ -11278,6 +11307,7 @@ else \
 		}
 		catch (Il2CppExceptionWrapper ex)
 		{
+			printf("interpreter exception when execute: %s.%s HiCode:%d\n",methodInfo->klass->name,methodInfo->name,(int)*(HiOpcodeEnum*)ip);
 			PREPARE_EXCEPTION(ex.ex, 0);
 			FIND_NEXT_EX_HANDLER_OR_UNWIND();
 		}

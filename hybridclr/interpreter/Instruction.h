@@ -7242,6 +7242,11 @@ namespace interpreter
 		uint16_t dst;
 		uint16_t obj;
 		uint16_t offset;
+		const char* name;
+		uint8_t __pad10;
+		uint8_t __pad11;
+		uint8_t __pad12;
+		uint8_t __pad13;
 	};
 
 
@@ -7250,6 +7255,11 @@ namespace interpreter
 		uint16_t dst;
 		uint16_t obj;
 		uint16_t offset;
+		const char* name;
+		uint8_t __pad10;
+		uint8_t __pad11;
+		uint8_t __pad12;
+		uint8_t __pad13;
 	};
 
 
@@ -7258,6 +7268,11 @@ namespace interpreter
 		uint16_t dst;
 		uint16_t obj;
 		uint16_t offset;
+		const char* name;
+		uint8_t __pad10;
+		uint8_t __pad11;
+		uint8_t __pad12;
+		uint8_t __pad13;
 	};
 
 
@@ -7266,6 +7281,11 @@ namespace interpreter
 		uint16_t dst;
 		uint16_t obj;
 		uint16_t offset;
+		const char* name;
+		uint8_t __pad10;
+		uint8_t __pad11;
+		uint8_t __pad12;
+		uint8_t __pad13;
 	};
 
 
@@ -7274,6 +7294,11 @@ namespace interpreter
 		uint16_t dst;
 		uint16_t obj;
 		uint16_t offset;
+		const char* name;
+		uint8_t __pad10;
+		uint8_t __pad11;
+		uint8_t __pad12;
+		uint8_t __pad13;
 	};
 
 
@@ -7282,6 +7307,11 @@ namespace interpreter
 		uint16_t dst;
 		uint16_t obj;
 		uint16_t offset;
+		const char* name;
+		uint8_t __pad10;
+		uint8_t __pad11;
+		uint8_t __pad12;
+		uint8_t __pad13;
 	};
 
 
@@ -7290,6 +7320,11 @@ namespace interpreter
 		uint16_t dst;
 		uint16_t obj;
 		uint16_t offset;
+		const char* name;
+		uint8_t __pad10;
+		uint8_t __pad11;
+		uint8_t __pad12;
+		uint8_t __pad13;
 	};
 
 
@@ -7298,6 +7333,11 @@ namespace interpreter
 		uint16_t dst;
 		uint16_t obj;
 		uint16_t offset;
+		const char* name;
+		uint8_t __pad10;
+		uint8_t __pad11;
+		uint8_t __pad12;
+		uint8_t __pad13;
 	};
 
 
@@ -7306,6 +7346,11 @@ namespace interpreter
 		uint16_t dst;
 		uint16_t obj;
 		uint16_t offset;
+		const char* name;
+		uint8_t __pad10;
+		uint8_t __pad11;
+		uint8_t __pad12;
+		uint8_t __pad13;
 	};
 
 
@@ -7314,6 +7359,11 @@ namespace interpreter
 		uint16_t dst;
 		uint16_t obj;
 		uint16_t offset;
+		const char* name;
+		uint8_t __pad10;
+		uint8_t __pad11;
+		uint8_t __pad12;
+		uint8_t __pad13;
 	};
 
 
@@ -7322,6 +7372,11 @@ namespace interpreter
 		uint16_t dst;
 		uint16_t obj;
 		uint16_t offset;
+		const char* name;
+		uint8_t __pad10;
+		uint8_t __pad11;
+		uint8_t __pad12;
+		uint8_t __pad13;
 	};
 
 
@@ -7330,6 +7385,11 @@ namespace interpreter
 		uint16_t dst;
 		uint16_t obj;
 		uint16_t offset;
+		const char* name;
+		uint8_t __pad10;
+		uint8_t __pad11;
+		uint8_t __pad12;
+		uint8_t __pad13;
 	};
 
 
@@ -7338,6 +7398,11 @@ namespace interpreter
 		uint16_t dst;
 		uint16_t obj;
 		uint16_t offset;
+		const char* name;
+		uint8_t __pad10;
+		uint8_t __pad11;
+		uint8_t __pad12;
+		uint8_t __pad13;
 	};
 
 
@@ -7346,6 +7411,11 @@ namespace interpreter
 		uint16_t dst;
 		uint16_t obj;
 		uint16_t offset;
+		const char* name;
+		uint8_t __pad10;
+		uint8_t __pad11;
+		uint8_t __pad12;
+		uint8_t __pad13;
 	};
 
 
@@ -7354,6 +7424,11 @@ namespace interpreter
 		uint16_t dst;
 		uint16_t obj;
 		uint16_t offset;
+		const char* name;
+		uint8_t __pad10;
+		uint8_t __pad11;
+		uint8_t __pad12;
+		uint8_t __pad13;
 	};
 
 
@@ -7363,10 +7438,11 @@ namespace interpreter
 		uint16_t obj;
 		uint16_t offset;
 		uint16_t size;
-		uint8_t __pad10;
-		uint8_t __pad11;
-		uint8_t __pad12;
-		uint8_t __pad13;
+		const char* name;
+		// uint8_t __pad10;
+		// uint8_t __pad11;
+		// uint8_t __pad12;
+		// uint8_t __pad13;
 		uint8_t __pad14;
 		uint8_t __pad15;
 	};
@@ -7378,10 +7454,11 @@ namespace interpreter
 		uint16_t obj;
 		uint16_t offset;
 		uint32_t size;
-		uint8_t __pad12;
-		uint8_t __pad13;
-		uint8_t __pad14;
-		uint8_t __pad15;
+		// uint8_t __pad12;
+		// uint8_t __pad13;
+		// uint8_t __pad14;
+		// uint8_t __pad15;
+		const char* name;
 	};
 
 

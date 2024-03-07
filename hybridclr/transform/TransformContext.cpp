@@ -282,6 +282,7 @@ namespace transform
 		ir->dst = dstIdx;
 		ir->obj = objIdx;
 		ir->offset = offset;
+		ir->name = fieldInfo->name;
 		switch (desc.type)
 		{
 		case LocationDescType::I1:
@@ -361,6 +362,7 @@ namespace transform
 				irn->obj = objIdx;
 				irn->offset = offset;
 				irn->size = desc.size;
+				irn->name = fieldInfo->name;
 				return irn;
 			}
 			}
