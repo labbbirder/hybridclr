@@ -604,10 +604,9 @@ namespace interpreter
 		{
 			if(visiting_field != nullptr)
 			{
-				std::string message = "cannot access member '";
-				message += visiting_field;
-				message += "' from null";
-				il2cpp::vm::Exception::RaiseNullReferenceException(STRING_TO_STRINGVIEW(message));
+				auto str_msg = il2cpp::utils::StringUtils::Printf("cannot access member '%s' from null",visiting_field);
+				auto wstr_msg = il2cpp::utils::StringUtils::Utf8ToUtf16(visiting_field);
+				il2cpp::vm::Exception::RaiseNullReferenceException(STRING_TO_STRINGVIEW(wstr_msg));
 			}
 			else
 			{
